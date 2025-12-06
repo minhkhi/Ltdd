@@ -6,20 +6,35 @@
     android:padding="24dp"
     android:gravity="center">
 
+    <!-- 1. ICON LOGO -->
+    <!-- Mẹo: Đặt kích thước cố định (vd: 120dp) để không bị vỡ bố cục -->
+    <!-- src: Bạn có thể đổi thành @drawable/ic_custom_logo nếu có -->
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Logo App"
+        android:src="@drawable/login" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="IoT Monitor Login"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="32dp"
+        android:text="Đăng nhập"
+        android:textColor="#4CAF50"
+        android:textSize="26sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email (Tên đăng nhập)"
-        android:inputType="textEmailAddress"/>
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -27,20 +42,24 @@
         android:layout_height="wrap_content"
         android:hint="Mật khẩu"
         android:inputType="textPassword"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:minHeight="48dp"/>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#4CAF50"
         android:text="Đăng nhập"
-        android:layout_marginTop="24dp"/>
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Đăng ký tài khoản mới"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:textColor="#4CAF50"/>
 
 </LinearLayout>

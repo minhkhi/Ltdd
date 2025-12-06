@@ -1,87 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00FAFAFA"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center_horizontal">
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:text="Trang chủ"
-        android:textSize="22sp"
+        android:textColor="#4caf50"
+        android:textSize="26sp"
         android:textStyle="bold" />
 
-    <!-- Card hiển thị Nhiệt độ -->
+    <!-- CARD HIỂN THỊ NHIỆT ĐỘ -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="110dp"
         android:layout_margin="10dp"
-        android:elevation="4dp">
-        <LinearLayout
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
+            android:padding="20dp">
+
+            <!-- 1. ICON SÁT TRÁI -->
+            <!-- Mẹo: Bạn hãy thay @mipmap/ic_launcher bằng @drawable/ic_custom_temp của bạn -->
+            <ImageView
+                android:id="@+id/iconTemp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="Icon Nhiệt độ"
+                android:src="@drawable/temperature" />
+
+            <!-- 2. THÔNG TIN SÁT PHẢI -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nhiệt độ (°C)"
-                android:textSize="18sp"/>
-            <TextView
-                android:id="@+id/tvTemp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="--.-"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                android:textColor="#FF5722"/>
-        </LinearLayout>
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nhiệt độ"
+                    android:textColor="#757575"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--.-"
+                        android:textColor="#FF5722"
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="°C"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Card hiển thị Độ ẩm -->
+    <!-- CARD HIỂN THỊ ĐỘ ẨM -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="110dp"
         android:layout_margin="10dp"
-        android:elevation="4dp">
-        <LinearLayout
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
+            android:padding="20dp">
+
+            <!-- 1. ICON SÁT TRÁI -->
+            <!-- Mẹo: Bạn hãy thay bằng @drawable/ic_custom_humid -->
+            <ImageView
+                android:id="@+id/iconHumid"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="Icon Độ ẩm"
+                android:src="@drawable/humid" />
+
+            <!-- 2. THÔNG TIN SÁT PHẢI -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Độ ẩm (%)"
-                android:textSize="18sp"/>
-            <TextView
-                android:id="@+id/tvHumid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="--.-"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                android:textColor="#2196F3"/>
-        </LinearLayout>
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Độ ẩm đất"
+                    android:textColor="#757575"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvHumid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textColor="#2196F3"
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="%"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnGoControl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chuyển đến màn hình điều khiển"
         android:layout_marginTop="40dp"
-        android:padding="15dp"/>
+        android:backgroundTint="#4CAF50"
+        android:padding="15dp"
+        android:text="Chuyển đến màn hình điều khiển"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#F44336"
         android:text="Đăng xuất"
-        android:backgroundTint="#757575"
-        android:layout_marginTop="10dp"/>
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
