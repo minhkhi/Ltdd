@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services' // Plugin Firebase
+}
+
+android {
+    namespace 'com.example.ltdd'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.example.ltdd"
+        minSdk 30 // Yêu cầu tối thiểu API 30
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true // Sử dụng ViewBinding cho tiện lợi
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // Thư viện Firebase (Sử dụng bản chuẩn cho Java, bỏ hậu tố -ktx)
+    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+}

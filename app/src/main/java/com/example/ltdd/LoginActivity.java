@@ -1,0 +1,92 @@
+package com.example.ltdd;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ltdd.databinding.ActivityLoginBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+public class LoginActivity extends AppCompatActivity {
+
+    private ActivityLoginBinding binding;
+    private FirebaseAuth auth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Thiết lập ViewBinding
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // Khởi tạo Firebase Auth
+        auth = FirebaseAuth.getInstance();
+
+        // Kiểm tra nếu đã đăng nhập thì vào thẳng Main
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+
+        // Xử lý nút Đăng nhập
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = binding.etEmail.getText().toString().trim();
+                String pass = binding.etPassword.getText().toString().trim();
+
+                if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)) {
+                    auth.signInWithEmailAndPassword(email, pass)
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                        finish();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "Lỗi: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                } else {
+                    Toast.makeText(LoginActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // Xử lý nút Đăng ký
+        binding.btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = binding.etEmail.getText().toString().trim();
+                String pass = binding.etPassword.getText().toString().trim();
+
+                if (!TextUtils.isEmpty(email) && pass.length() >= 6) {
+                    auth.createUserWithEmailAndPassword(email, pass)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(LoginActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                                        // Tự động đăng nhập hoặc yêu cầu đăng nhập lại tùy logic
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "Đăng ký lỗi: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                } else {
+                    Toast.makeText(LoginActivity.this, "Email không được trống, Pass >= 6 ký tự", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}
