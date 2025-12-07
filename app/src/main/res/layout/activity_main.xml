@@ -6,7 +6,7 @@
     android:background="#00FAFAFA"
     android:padding="16dp">
 
-    <!-- Main content area -->
+    <!-- A new LinearLayout to hold all content EXCEPT the button you want at the bottom -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,7 +35,6 @@
                 android:layout_height="match_parent"
                 android:padding="20dp">
 
-                <!-- 1. ICON SÁT TRÁI -->
                 <ImageView
                     android:id="@+id/iconTemp"
                     android:layout_width="60dp"
@@ -45,7 +44,6 @@
                     android:contentDescription="Icon Nhiệt độ"
                     android:src="@drawable/temperature" />
 
-                <!-- 2. THÔNG TIN SÁT PHẢI -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,7 +100,6 @@
                 android:layout_height="match_parent"
                 android:padding="20dp">
 
-                <!-- 1. ICON SÁT TRÁI -->
                 <ImageView
                     android:id="@+id/iconHumid"
                     android:layout_width="60dp"
@@ -112,7 +109,6 @@
                     android:contentDescription="Icon Độ ẩm"
                     android:src="@drawable/humid" />
 
-                <!-- 2. THÔNG TIN SÁT PHẢI -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -156,33 +152,27 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
-
-    <!-- Container for buttons at the bottom -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
         <Button
             android:id="@+id/btnGoControl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:backgroundTint="#4CAF50"
             android:padding="15dp"
             android:text="Chuyển đến màn hình điều khiển"
             android:textColor="#FFFFFF" />
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#F44336"
-            android:text="Đăng xuất"
-            android:textColor="#FFFFFF" />
     </LinearLayout>
+
+    <!-- THIS IS THE BUTTON MOVED TO THE BOTTOM -->
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#F44336"
+        android:text="Đăng xuất"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
