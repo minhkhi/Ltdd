@@ -1,11 +1,13 @@
 package com.example.ltdd;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ltdd.databinding.ActivityMainBinding;
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Kết nối đến node "devices/device_01" trên Firebase
+        // Kết nối đến node "devices/device_01" trên Firebase (Server Singapore)
         database = FirebaseDatabase.getInstance("https://smart-garden-94677-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("devices/device_01");
 
         // Lắng nghe dữ liệu realtime
@@ -37,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // Giả sử cấu trúc JSON: { "temp": 30.5, "humid": 60 }
-                // Cần xử lý null safety
                 Double temp = snapshot.child("temp").getValue(Double.class);
                 Integer humid = snapshot.child("humid").getValue(Integer.class);
 
@@ -69,15 +70,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Đăng xuất
+        // SỰ KIỆN NÚT ĐĂNG XUẤT (Đã cập nhật)
         binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                showLogoutConfirmationDialog();
             }
         });
+    }
+
+    // Hàm hiển thị hộp thoại xác nhận
+    private void showLogoutConfirmationDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Đăng xuất")
+                .setMessage("Bạn có chắc chắn muốn đăng xuất không?")
+                .setPositiveButton("Đăng xuất", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Thực hiện logic đăng xuất khi người dùng chọn "Đăng xuất"
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish(); // Đóng MainActivity để không quay lại được bằng nút Back
+                        Toast.makeText(MainActivity.this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Hủy", null) // Không làm gì khi chọn "Hủy", hộp thoại tự đóng
+                .show();
     }
 }
