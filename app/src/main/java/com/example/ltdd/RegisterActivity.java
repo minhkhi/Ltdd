@@ -40,8 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (pass.length() < 6) {
-                    Toast.makeText(RegisterActivity.this, "Mật khẩu phải từ 6 ký tự trở lên", Toast.LENGTH_SHORT).show();
+                if (pass.length() < 8) {
+                    Toast.makeText(RegisterActivity.this, "Mật khẩu phải từ 8 ký tự trở lên", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
