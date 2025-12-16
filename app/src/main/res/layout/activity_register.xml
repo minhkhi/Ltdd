@@ -34,10 +34,10 @@
         android:id="@+id/etRegPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mật khẩu (tối thiểu 6 ký tự)"
-        android:inputType="textPassword"
         android:layout_marginTop="16dp"
-        android:minHeight="48dp"/>
+        android:hint="Mật khẩu (tối thiểu 8 ký tự)"
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/etConfirmPassword"
