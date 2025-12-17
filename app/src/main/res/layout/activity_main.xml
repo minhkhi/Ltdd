@@ -162,6 +162,14 @@
             android:text="Chuyển đến màn hình điều khiển"
             android:textColor="#FFFFFF" />
 
+        <Button
+            android:id="@+id/btnChangePass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đổi mật khẩu"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#2196F3"/>
+
     </LinearLayout>
 
     <!-- THIS IS THE BUTTON MOVED TO THE BOTTOM -->

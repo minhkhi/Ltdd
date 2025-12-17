@@ -36,7 +36,7 @@ public class ControlActivity extends AppCompatActivity {
         // 1. Lấy dữ liệu hiện tại để hiển thị lên màn hình
         loadCurrentConfig();
 
-        // 2. Xử lý bật tắt đèn/máy bơm
+        // 2. Xử lý bật tắt đèn
         binding.swLight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
