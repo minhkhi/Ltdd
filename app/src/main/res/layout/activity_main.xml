@@ -6,7 +6,6 @@
     android:background="#00FAFAFA"
     android:padding="16dp">
 
-    <!-- A new LinearLayout to hold all content EXCEPT the button you want at the bottom -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -165,7 +164,7 @@
         <Button
             android:id="@+id/btnChangePass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="#2196F3"
             android:text="Đổi mật khẩu"
@@ -174,7 +173,6 @@
 
     </LinearLayout>
 
-    <!-- THIS IS THE BUTTON MOVED TO THE BOTTOM -->
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"

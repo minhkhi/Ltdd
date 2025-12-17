@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 if (!pass.equals(confirmPass)) {
-                    Toast.makeText(RegisterActivity.this, "Mật khẩu xác nhận không khớp", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Mật khẩu mới không khớp", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

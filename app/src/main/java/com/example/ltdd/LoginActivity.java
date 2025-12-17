@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
                 String pass = binding.etPassword.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass)) {
-                    // Hiển thị loading (nếu muốn thêm ProgressBar sau này)
 
                     auth.signInWithEmailAndPassword(email, pass)
                             .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -57,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                         finish();
                                     } else {
-                                        // Xử lý lỗi chi tiết
+                                        // Xử lý lỗi
                                         String errorMessage;
                                         try {
                                             throw task.getException();
