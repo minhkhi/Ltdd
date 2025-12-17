@@ -166,9 +166,11 @@
             android:id="@+id/btnChangePass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đổi mật khẩu"
             android:layout_marginTop="10dp"
-            android:backgroundTint="#2196F3"/>
+            android:backgroundTint="#2196F3"
+            android:text="Đổi mật khẩu"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#FFFFFF" />
 
     </LinearLayout>
 
