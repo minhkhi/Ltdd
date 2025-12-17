@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         createNotificationChannel();
         checkNotificationPermission();
 
+        Intent serviceIntent = new Intent(this, Background.class);
+        startService(serviceIntent);
+
         database = FirebaseDatabase.getInstance("https://smart-garden-94677-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("devices/device_01");
 
         database.addValueEventListener(new ValueEventListener() {
@@ -79,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
                     binding.tvHumid.setText("--");
                 }
 
-                checkAlert(temp, humid);
             }
 
             @Override
