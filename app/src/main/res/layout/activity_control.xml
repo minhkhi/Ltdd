@@ -60,7 +60,18 @@
             android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- MỚI: Cài đặt Độ ẩm -->
+    <!--TextView hiển thị ngưỡng nhiệt độ hiện tại -->
+    <TextView
+        android:id="@+id/tvCurrentTempThreshold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngưỡng nhiệt độ hiện tại: -- °C"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="4dp"/>
+
+    <!--Cài đặt Độ ẩm -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,6 +85,16 @@
             android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--TextView hiển thị ngưỡng độ ẩm hiện tại -->
+    <TextView
+        android:id="@+id/tvCurrentHumidThreshold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngưỡng độ ẩm hiện tại: -- %"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="4dp"/>
     <Button
         android:id="@+id/btnSendConfig"
         android:layout_width="match_parent"

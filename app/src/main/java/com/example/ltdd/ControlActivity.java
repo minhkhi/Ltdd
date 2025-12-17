@@ -36,7 +36,7 @@ public class ControlActivity extends AppCompatActivity {
         // 1. Lấy dữ liệu hiện tại để hiển thị lên màn hình
         loadCurrentConfig();
 
-        // 2. Xử lý bật tắt đèn
+        // 2. Xử lý bật tắt đèn/máy bơm
         binding.swLight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -80,12 +80,16 @@ public class ControlActivity extends AppCompatActivity {
                 Double tempThresh = snapshot.child("temp_threshold").getValue(Double.class);
                 if (tempThresh != null) {
                     binding.etThreshold.setText(String.valueOf(tempThresh));
+                    // Cập nhật TextView hiển thị ngưỡng hiện tại
+                    binding.tvCurrentTempThreshold.setText("Ngưỡng nhiệt độ hiện tại: " + tempThresh + " °C");
                 }
 
                 // Lấy ngưỡng độ ẩm (MỚI)
                 Integer humidThresh = snapshot.child("humid_threshold").getValue(Integer.class);
                 if (humidThresh != null) {
                     binding.etHumidThreshold.setText(String.valueOf(humidThresh));
+                    // Cập nhật TextView hiển thị ngưỡng hiện tại
+                    binding.tvCurrentHumidThreshold.setText("Ngưỡng độ ẩm hiện tại: " + humidThresh + " %");
                 }
             }
         });
@@ -114,6 +118,9 @@ public class ControlActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(ControlActivity.this, "Đã cập nhật cấu hình Smart Garden!", Toast.LENGTH_SHORT).show();
+                            // Cập nhật lại hiển thị sau khi lưu thành công
+                            binding.tvCurrentTempThreshold.setText("Ngưỡng nhiệt độ hiện tại: " + tempThreshold + " °C");
+                            binding.tvCurrentHumidThreshold.setText("Ngưỡng độ ẩm hiện tại: " + humidThreshold + " %");
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
